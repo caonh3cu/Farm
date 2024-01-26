@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace CAT
 {
     public class GlobalUIManager : ManagerBaseTemplate<GlobalUIManager>
     {
+        public bool in_world_gate => _main_menu.is_show; // 是否在游戏初始界面
+        
         public Transform canvas;
         
         public static LoadingUI loading => instance._loading;
@@ -41,7 +39,10 @@ namespace CAT
         public static PickTips pick_tips => instance._pick_tips;
         private PickTips _pick_tips;
         public GameObject pick_tips_prefab;
-        
+
+        public static MainMenu main_menu => instance._main_menu;
+        private MainMenu _main_menu;
+        public GameObject main_menu_prefab;
         private void Start()
         { 
             _esc = Instantiate(esc_prefab, canvas).GetComponent<EscPopupUI>();
@@ -67,65 +68,22 @@ namespace CAT
 
             _pick_tips = Instantiate(pick_tips_prefab, canvas).GetComponent<PickTips>();
             _pick_tips.Hide();
+
+            _main_menu = Instantiate(main_menu_prefab, canvas).GetComponent<MainMenu>();
+            _main_menu.Show();
         }
     
         private void Update()
         {
-
-            if (G.control_right)
+            if (!in_world_gate)
             {
-                if (Input.GetButtonDown("OpenBag"))
-                {
-                    if (bag.is_show)
-                    {
-                        bag.Hide();
-                        main_screen.Show();
-                    }
-                    else
-                    {
-                        main_screen.Hide();
-                        esc.Hide();
-                        switch_magic.Hide();
-                        map.Hide();
-                        block_info.Hide();
-                        // bag.Hide();
-                        
-                        bag.Show();
-                    }
-                }
-                if (Input.GetButtonDown("OpenMap"))
-                {
-                    if (map.is_show)
-                    {
-                        map.Hide();
-                        main_screen.Show();
-                    }
-                    else
-                    {
-                        main_screen.Hide();
-                        esc.Hide();
-                        switch_magic.Hide();
-                        // map.Hide();
-                        block_info.Hide();
-                        bag.Hide();
-                        
-                        map.Show();
-                    }
-                }
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     if (main_screen.is_show)
                     {
-                        if (block_info.is_show || switch_magic.is_show)
-                        {
-                            block_info.Hide();
-                            switch_magic.Hide();
-                        }
-                        else
-                        {
-                            main_screen.Hide();
-                            esc.Show();
-                        }
+                        main_screen.Hide();
+                        esc.Show();
+                        
                     }
                     else if (esc.is_show)
                     {
@@ -135,39 +93,9 @@ namespace CAT
                     else
                     {
                         main_screen.Hide();
-                        // esc.Hide();
-                        switch_magic.Hide();
-                        map.Hide();
-                        block_info.Hide();
-                        bag.Hide();
-                        
                         esc.Show();
                     }
                 }
-                if (Input.GetButtonDown("SwitchMagic"))
-                {
-                    if (main_screen.is_show)
-                    {
-                        if(switch_magic.is_show)
-                            switch_magic.Hide(); 
-                        else
-                            switch_magic.Show();
-                    }
-                }
-                if (Input.GetButtonDown("ShowBlockInfo"))
-                {
-                    if (main_screen.is_show)
-                    {
-                        if(block_info.is_show)
-                            block_info.Hide();
-                        else
-                            block_info.Show();
-                    }
-                }
-                // if (Input.GetKeyDown("ShowItemInfo"))
-                // {
-                //
-                // }   
             }
         }
     }

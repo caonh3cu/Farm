@@ -10,24 +10,13 @@ namespace CAT
         public float bullet_force = 1;
         public float 前摇 = 0.4f;
         public float 后摇 = 0.1f;
-        private void Update()
-        {
-            if (is_owner_main_player && !main_player.attacking)
-            {
-                if (main_player.is_die) return;
-                AttackCheck();
-            }
-        }
 
-        public virtual void AttackCheck()
+        public virtual void Attack(Vector2 _mouse_position)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-
-                attack_click_position = (Vector2) G.main_camera.ScreenToWorldPoint(Input.mousePosition) -
-                                        ((Vector2) main_player.transform.position + main_player.player_collider.offset);
-                main_player.StartSkill(attack_click_position.x > 0, 前摇 + 后摇, 前摇, 后摇, DoAttack);
-            }
+            attack_click_position = (Vector2) G.main_camera.ScreenToWorldPoint(_mouse_position) -
+                                    ((Vector2) main_player.transform.position + main_player.player_collider.offset);
+            main_player.StartSkill(attack_click_position.x > 0, 前摇 + 后摇, 前摇, 后摇, DoAttack);
+            
         }
 
         public virtual void DoAttack(Transform _attack_start_transform)

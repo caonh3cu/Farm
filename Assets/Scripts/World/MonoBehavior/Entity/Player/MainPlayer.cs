@@ -83,12 +83,18 @@ namespace CAT
 
         private void Update()
         {
+            if (!G.player_control) return;
             if (is_die)
             {
                 if(Input.GetKeyDown(KeyCode.R))
                     Rebirth();
                 return;
             }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                pack_and_equip.PickNearestItem();
+            }
+            
             Vector2 position = transform.position;
             Vector2 velocity = _rigidbody.velocity;
             if (velocity.y > max_speed)
@@ -174,7 +180,12 @@ namespace CAT
             
             // 速度设置为0
             _rigidbody.velocity = velocity = Vector2.zero;
-            
+
+            if (!attacking && Input.GetMouseButtonDown(0))
+            {
+                if(pack_and_equip.current_weapon!=null)
+                    pack_and_equip.current_weapon.Attack(Input.mousePosition);
+            }
             // 然后是攻击动作
             var attack_passed = Time.time - _attack_button_press_time;
             if (attack_passed < attack_duration)

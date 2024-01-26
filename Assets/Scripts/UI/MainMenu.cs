@@ -3,43 +3,15 @@ using System;
 using UnityEngine;
 namespace CAT
 {
-    public class MainMenu : MonoBehaviour
+    public class MainMenu : UIBase
     {
-        
-        private void OnEnable()
-        {
-            // 进入世界之门，剥夺操纵权，后面可以释放魔法获得操纵权，并隐藏主界面UI
-            G.control_right = false;
-        }
 
-        private void OnDisable()
+        // Start is called before the first frame update
+        public void StartGame()
         {
-            G.control_right = true;
+            GlobalUIManager.main_screen.Show();
+            Hide();
         }
-
-        public void Play()
-        {
-            // if (WorldManager.created)
-            // {
-            //     WorldManager.Destroy();
-            // }
-            // WorldManager.Create();
-            // SceneManager.ChangeScene(SceneManager.GetScene<Home>(), () =>
-            // {
-            //     GlobalUIManager.main_screen.Show();
-            // });
-        }
-
-        public void Continue()
-        {
-        
-        }
-
-        public void Options()
-        {
-        
-        }
-
         public void Quit()
         {
             Application.Quit();

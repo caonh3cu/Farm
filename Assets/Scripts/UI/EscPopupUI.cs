@@ -13,8 +13,13 @@ namespace CAT
 
         public void BackToMain()
         {
-            gameObject.SetActive(false);
-            // SceneManager.ChangeScene(SceneManager.GetScene<WorldGate>(), null);
+            Hide();
+            GlobalUIManager.main_menu.Show();
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
         }
     }
 }

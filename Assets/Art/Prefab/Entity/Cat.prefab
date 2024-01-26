@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 2521163836302842221}
   - component: {fileID: 4317452719261852763}
   m_Layer: 6
-  m_Name: MainPlayer
+  m_Name: Cat
   m_TagString: MainPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2454,6 +2454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: health_bar_back
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343105122796559805, guid: 99096096fb789ad488ea084757f4b970,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8511558177112157640, guid: 99096096fb789ad488ea084757f4b970,
         type: 3}

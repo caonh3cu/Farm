@@ -53,13 +53,6 @@ namespace CAT
                 if(tips.is_show)
                     tips.Hide();
             }
-
-            if (_nearest_item != null && Input.GetKeyDown(KeyCode.F))
-            {
-                _nearby_items.Remove(_nearest_item);
-                PickItem(_nearest_item);
-                _nearest_item = null;
-            }
         }
 
         private void OnTriggerEnter2D(Collider2D _col)
@@ -79,6 +72,16 @@ namespace CAT
                 var item = _other.transform.parent.GetComponent<Item>();
                 if (_nearby_items.Contains(item))
                     _nearby_items.Remove(item);
+            }
+        }
+
+        public void PickNearestItem()
+        {
+            if (_nearest_item != null)
+            {
+                _nearby_items.Remove(_nearest_item);
+                PickItem(_nearest_item);
+                _nearest_item = null;
             }
         }
 
