@@ -19,15 +19,15 @@ namespace CAT
 
         public void Play()
         {
-            if (WorldManager.created)
-            {
-                WorldManager.Destroy();
-            }
-            WorldManager.Create();
-            SceneManager.ChangeScene(SceneManager.GetScene<Home>(), () =>
-            {
-                GlobalUIManager.main_screen.Show();
-            });
+            // if (WorldManager.created)
+            // {
+            //     WorldManager.Destroy();
+            // }
+            // WorldManager.Create();
+            // SceneManager.ChangeScene(SceneManager.GetScene<Home>(), () =>
+            // {
+            //     GlobalUIManager.main_screen.Show();
+            // });
         }
 
         public void Continue()

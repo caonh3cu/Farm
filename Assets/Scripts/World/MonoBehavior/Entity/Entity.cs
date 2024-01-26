@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace World.MonoBehavior
+namespace CAT
 {
     public class Entity : MonoBehaviour
     {

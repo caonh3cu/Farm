@@ -10,50 +10,63 @@ namespace CAT
     {
         public Transform canvas;
         
-        public static LoadingUI loading;
+        public static LoadingUI loading => instance._loading;
+        private LoadingUI _loading;
         public GameObject loading_prefab;
 
-        public static MainScreen main_screen;
+        public static MainScreen main_screen => instance._main_screen;
+        private MainScreen _main_screen;
         public GameObject main_screen_prefab;
 
-        public static EscPopupUI esc;
+        public static EscPopupUI esc => instance._esc;
+        private EscPopupUI _esc;
         public GameObject esc_prefab;
 
-        public static SwitchMagicUI switch_magic;
+        public static SwitchMagicUI switch_magic => instance._switch_magic;
+        private SwitchMagicUI _switch_magic;
         public GameObject switch_magic_prefab;
 
-        public static MapUI map;
+        public static MapUI map => instance._map;
+        private MapUI _map;
         public GameObject map_prefab;
 
-        public static BagUI bag;
+        public static BagUI bag => instance._bag;
+        private BagUI _bag;
         public GameObject bag_prefab;
 
-        public static BlockInfoUI block_info;
+        public static BlockInfoUI block_info => instance._block_info;
+        private BlockInfoUI _block_info;
         public GameObject block_info_prefab;
+
+        public static PickTips pick_tips => instance._pick_tips;
+        private PickTips _pick_tips;
+        public GameObject pick_tips_prefab;
         
         private void Start()
-        {
-            esc = Instantiate(esc_prefab, canvas).GetComponent<EscPopupUI>();
-            esc.Hide();
+        { 
+            _esc = Instantiate(esc_prefab, canvas).GetComponent<EscPopupUI>();
+            _esc.Hide(); 
 
-            loading = Instantiate(loading_prefab, canvas).GetComponent<LoadingUI>();
-            loading.Hide();
+            _loading = Instantiate(loading_prefab, canvas).GetComponent<LoadingUI>();
+            _loading.Hide();
             
-            main_screen = Instantiate(main_screen_prefab, canvas).GetComponent<MainScreen>();
-            main_screen.Hide();
+            _main_screen = Instantiate(main_screen_prefab, canvas).GetComponent<MainScreen>();
+            _main_screen.Hide();
             
-            switch_magic = Instantiate(switch_magic_prefab, canvas).GetComponent<SwitchMagicUI>();
-            switch_magic.Hide();
+            _switch_magic = Instantiate(switch_magic_prefab, canvas).GetComponent<SwitchMagicUI>();
+            _switch_magic.Hide();
             
-            map = Instantiate(map_prefab, canvas).GetComponent<MapUI>();
-            map.Hide();
+            _map = Instantiate(map_prefab, canvas).GetComponent<MapUI>();
+            _map.Hide();
             
-            bag = Instantiate(bag_prefab, canvas).GetComponent<BagUI>();
-            bag.Hide();
+            _bag = Instantiate(bag_prefab, canvas).GetComponent<BagUI>();
+            _bag.Hide();
             
-            block_info = Instantiate(block_info_prefab, canvas).GetComponent<BlockInfoUI>();
-            block_info.Hide();
-            
+            _block_info = Instantiate(block_info_prefab, canvas).GetComponent<BlockInfoUI>();
+            _block_info.Hide();
+
+            _pick_tips = Instantiate(pick_tips_prefab, canvas).GetComponent<PickTips>();
+            _pick_tips.Hide();
         }
     
         private void Update()

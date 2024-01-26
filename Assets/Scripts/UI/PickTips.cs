@@ -1,7 +1,9 @@
-﻿namespace CAT
+﻿using TMPro;
+
+namespace CAT
 {
-    public class PickTips
+    public class PickTips: UIBase
     {
-        
+        public TextMeshProUGUI tips;
     }
 }

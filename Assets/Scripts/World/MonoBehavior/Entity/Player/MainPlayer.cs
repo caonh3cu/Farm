@@ -252,8 +252,9 @@ namespace CAT
         }
         
 
-        public void Hurt(int _damage)
+        public void Hurt(Entity source, int _damage)
         {
+            if (is_die) return;
             is_run = false;
             _attack_button_press_time = -attack_duration;
             _attack_succeed = false;

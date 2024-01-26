@@ -2,7 +2,7 @@
 
 namespace CAT
 {
-    public class Player : MonoBehaviour
+    public class Player : Entity
     {
         
     }

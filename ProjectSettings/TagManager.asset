@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MainPlayer
+  - Item
+  - FxTemporaire
+  - Bullet
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -11,6 +16,11 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Item
+  - ItemTrigger
+  - Bullet
+  - Monster
   - 
   - 
   - 
@@ -23,11 +33,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
   - 
   - 
   - 

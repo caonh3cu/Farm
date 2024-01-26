@@ -14,7 +14,7 @@ namespace CAT
         public void BackToMain()
         {
             gameObject.SetActive(false);
-            SceneManager.ChangeScene(SceneManager.GetScene<WorldGate>(), null);
+            // SceneManager.ChangeScene(SceneManager.GetScene<WorldGate>(), null);
         }
     }
 }
